@@ -6,12 +6,12 @@ namespace ItemsInClass
 {
     class Data
     {
-        protected string Name { get; set; }
-        protected double Hp { get; set; }
-        protected double Atk { get; set; }
-        protected double AtkSpeed { get; set; }
-        protected double Def { get; set; }
-        protected int Evade { get; set; }
+        public string Name { get; set; }
+        public double Hp { get; set; }
+        public double Atk { get; set; }
+        public double AtkSpeed { get; set; }
+        public double Def { get; set; }
+        public int Evade { get; set; }
 
         public Data () { }
 
@@ -25,30 +25,6 @@ namespace ItemsInClass
             this.Evade = evade;
         }
         
-        public string GetName()
-        {
-            return Name;
-        }
-        public double GetHealth()
-        {
-            return Hp;
-        }
-        public double GetAtk()
-        {
-            return Atk;
-        }
-        public double GetDef()
-        {
-            return Def;
-        }
-        public double GetAtkSpeed()
-        {
-            return AtkSpeed;
-        }
-        public int GetEvade()
-        {
-            return Evade;
-        }
 
     }
 }
