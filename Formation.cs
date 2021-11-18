@@ -260,7 +260,7 @@ namespace itemForClass
                                 x++;
                                 break;
                             }
-                        case int what when chooseForm != 1 || chooseForm != 2 || chooseForm != 3 :
+                         default :
                             { 
                                 Console.WriteLine("\n- please enter the number between 1-3 -");
                                 i = 3;
