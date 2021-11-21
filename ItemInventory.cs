@@ -22,7 +22,7 @@ namespace itemForClass
         
 
         // player status after attach items
-        public static void ItemWithPlayer(string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger, Common obj, Data pCheck, Data p1, Data p2, Data p3)
+        /*public static void ItemWithPlayer(string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger, Common obj, Data pCheck, Player1 p1, Player2 p2, Player3 p3)
         {
             int x = 0;
 
@@ -34,26 +34,29 @@ namespace itemForClass
                     // check information
                     if (party[i] == p1.Name)
                     {
-                        pCheck.Hp = 20;
-                        pCheck.Atk = 10;
-                        pCheck.AtkSpeed = 10;
-                        pCheck.Def = 50;
-                        pCheck.Evade = 50;
+                        pCheck.Hp = p1.Hp;
+                        pCheck.Atk = p1.Atk;
+                        pCheck.AtkSpeed = p1.AtkSpeed;
+                        pCheck.Def = p1.Def;
+                        obj.CritChance = p1.CritChance;
+                        pCheck.Evade = p1.Evade;
                     }
                     else if (party[i] == p2.Name)
                     {
-                        pCheck.Hp = 15;
-                        pCheck.Atk = 5;
-                        pCheck.AtkSpeed = 15;
-                        pCheck.Def = 20;
-                        pCheck.Evade = 55;
+                        pCheck.Hp = p2.Hp;
+                        pCheck.Atk = p2.Atk;
+                        pCheck.AtkSpeed = p2.AtkSpeed;
+                        pCheck.Def = p2.Def;
+                        obj.CritChance = p2.CritChance;
+                        pCheck.Evade = p2.Evade;
                     } else if (party[i] == p3.Name)
                     {
-                        pCheck.Hp = 15;
-                        pCheck.Atk = 5;
-                        pCheck.AtkSpeed = 15;
-                        pCheck.Def = 20;
-                        pCheck.Evade = 55;
+                        pCheck.Hp = p3.Hp;
+                        pCheck.Atk = p3.Atk;
+                        pCheck.AtkSpeed = p3.AtkSpeed;
+                        pCheck.Def = p3.Def;
+                        obj.CritChance = p3.CritChance;
+                        pCheck.Evade = p3.Evade;
                     }
 
                 if (itemCheck[i] == sword.Name)
@@ -62,7 +65,7 @@ namespace itemForClass
                     pCheck.Atk += sword.Atk;
                     pCheck.AtkSpeed += sword.AtkSpeed;
                     pCheck.Def += sword.Def;
-                    obj.CritChance = 10;
+                    obj.CritChance += sword.CritChance;
                     pCheck.Evade += sword.Evade;
                 }
                 else if (itemCheck[i] == wand.Name)
@@ -70,7 +73,7 @@ namespace itemForClass
                     pCheck.Atk += wand.Atk;
                     pCheck.AtkSpeed += wand.AtkSpeed;
                     pCheck.Def += wand.Def;
-                    obj.CritChance = 5;
+                    obj.CritChance += wand.CritChance;
                     pCheck.Evade += wand.Evade;
                 }
                 else if (itemCheck[i] == axe.Name)
@@ -78,7 +81,7 @@ namespace itemForClass
                     pCheck.Atk += axe.Atk;
                     pCheck.AtkSpeed += axe.AtkSpeed;
                     pCheck.Def += axe.Def;
-                    obj.CritChance = 15;
+                    obj.CritChance += axe.CritChance;
                     pCheck.Evade += axe.Evade;
                 }
                 else if (itemCheck[i] == dagger.Name)
@@ -86,7 +89,7 @@ namespace itemForClass
                     pCheck.Atk += dagger.Atk;
                     pCheck.AtkSpeed += dagger.AtkSpeed;
                     pCheck.Def += dagger.Def;
-                    obj.CritChance = 5;
+                    obj.CritChance += dagger.CritChance;
                     pCheck.Evade += dagger.Evade;
                 }
                 Console.WriteLine($" Hp: {pCheck.Hp} Atk: {pCheck.Atk} AtkSpeed: {pCheck.AtkSpeed} Def: {pCheck.Def} CritChance: {obj.CritChance} Evade: {pCheck.Evade}\n");
@@ -94,7 +97,7 @@ namespace itemForClass
                 }
 
             Console.WriteLine("=======================================================================================================");
-        }
+        }*/
 
 
         // Remove Items

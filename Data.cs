@@ -2,8 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace ItemsInClass
+namespace itemForClass
 {
+    public enum ElementType
+    {
+        common,
+        fire,
+        water,
+        leaf
+    }
     class Data
     {
         public string Name { get; set; }
@@ -13,9 +20,9 @@ namespace ItemsInClass
         public double Def { get; set; }
         public int Evade { get; set; }
 
-        public Data () { }
+        public Data() { }
 
-        public Data (string name, double hp, double atk, double atkSpeed, double def, int evade)
+        public Data(string name, double hp, double atk, double atkSpeed, double def, int evade)
         {
             this.Name = name;
             this.Hp = hp;
@@ -24,7 +31,6 @@ namespace ItemsInClass
             this.Def = def;
             this.Evade = evade;
         }
-        
 
     }
 }

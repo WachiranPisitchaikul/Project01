@@ -4,14 +4,7 @@ using System.Text;
 
 namespace itemForClass
 {
-    public enum ElementType
-    {
-        common,
-        fire,
-        water,
-        leaf
-    }
-    class Item : Data
+    abstract class Item : Data
     {
         public int CritChance { get; set; }
         public ElementType WeaponType { get; set; }
@@ -31,17 +24,16 @@ namespace itemForClass
             {
                 Console.WriteLine(i + 1 + " " + party[i] + " is used " + itemCheck[i]);
             }
-            Console.WriteLine();
         }
 
         // Equip Items
-        public static void EquipItems(string[] itemSlot, string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Item item)
+        public static void EquipItems(string[] itemSlot, string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger)
         {
             char confirm;
             int x = 0;
 
             // show items in inventory
-            ItemInventory.Inventory(sword, wand, axe);
+            ItemInventory.Inventory(sword, wand, axe, dagger);
 
             do
             {
@@ -50,18 +42,18 @@ namespace itemForClass
                 while (check)
                 {
                     // select items for character
-                    Console.WriteLine("Please Select Item to attach on your character >> " + party[x]);
+                    Console.WriteLine("\nPlease Select Item to attach on your character >> " + party[x]);
 
                     string inputItems = Console.ReadLine().ToLower();
                     switch (inputItems)
                     {
                         case string n when inputItems == itemSlot[0] || inputItems == itemSlot[1] ||
-                                           inputItems == itemSlot[2]:
+                                           inputItems == itemSlot[2] || inputItems == itemSlot[3]:
                             {
                                 // Check Duplicate Select Items
 
                                 if (inputItems == itemCheck[0] || inputItems == itemCheck[1] ||
-                                    inputItems == itemCheck[2])
+                                    inputItems == itemCheck[2] || inputItems == itemCheck[3])
                                 {
                                     Console.WriteLine("\nYou have selected {0} before .", inputItems);
                                 }
@@ -70,14 +62,14 @@ namespace itemForClass
                                     // confirm items and attach them
                                     do
                                     {
-                                        Console.WriteLine("Are you sure to used " + itemCheck[x] + "  ( y / n ) ");
+                                        Console.WriteLine("\nAre you sure to used " + itemCheck[x] + "  ( y / n ) ");
                                         Char.TryParse(Console.ReadLine().ToLower(), out confirm);
                                         switch (confirm)
                                         {
                                             case 'y':
                                                 {
                                                     itemCheck[x] = inputItems;
-                                                    Console.WriteLine("Okay ! You Choose " + itemCheck[x] + "     Let's see");
+                                                    Console.WriteLine("\nOkay ! You Choose " + itemCheck[x] + "     Let's see");
                                                     x++;
                                                     check = false;
                                                     yOrN = false;
@@ -89,7 +81,7 @@ namespace itemForClass
                                                 }
                                             case 'n':
                                                 {
-                                                    Console.WriteLine($"Aww. {inputItems} is not your choice      Let's have a look ... ! ");
+                                                    Console.WriteLine($"\nAww. {inputItems} is not your choice      Let's have a look ... ! ");
                                                     yOrN = false;
                                                     break;
                                                 }
@@ -99,7 +91,8 @@ namespace itemForClass
                                                 }
                                             default:
                                                 {
-                                                    Console.WriteLine("you enter wrong input .");
+                                                    Console.WriteLine("\n-- you enter wrong input --");
+                                                    Console.WriteLine("-- please try again --");
                                                     break;
                                                 }
                                         }
@@ -110,7 +103,7 @@ namespace itemForClass
 
                         default:
                             {
-                                Console.WriteLine("Please enter the items name .");
+                                Console.WriteLine("\nPlease enter the items name .");
                                 check = false;
                                 break;
                             }
@@ -118,7 +111,17 @@ namespace itemForClass
                     }
                     AttachItem(party, itemCheck);
                 }
-            } while (x < party.Length);
+            } while (x < party.Length); 
+        }
+
+        public abstract void ActionAttack();
+    }
+
+    class Common : Item
+    {
+        public override void ActionAttack()
+        {
+            throw new NotImplementedException();
         }
     }
 
@@ -127,6 +130,11 @@ namespace itemForClass
         public Sword(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, critChance, evade, type)
         {
         }
+
+        public override void ActionAttack()
+        {
+            
+        }
     }
 
     class Wand : Item
@@ -134,12 +142,33 @@ namespace itemForClass
         public Wand(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, critChance, evade, type)
         {
         }
+
+        public override void ActionAttack()
+        {
+            
+        }
     }
 
     class Axe : Item
     {
         public Axe(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, critChance, evade, type)
         {
+        }
+
+        public override void ActionAttack()
+        {
+            
+        }
+    }
+    class Dagger : Item
+    {
+        public Dagger(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, critChance, evade, type)
+        {
+        }
+
+        public override void ActionAttack()
+        {
+            
         }
     }
 }
