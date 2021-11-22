@@ -275,11 +275,125 @@ namespace itemForClass
                         }
                         if (boss1.AtkSpeed > 0)
                         {
+                        double attackResultParty = boss1.Attack();
+                        
+                        Character[] AtkP = new Character[] { p1, p2, p3 };
+                        Random randAtkP = new Random();
+                        int keepAtkP = randAtkP.Next(0, 2);
+                        if (keepAtkP == 0)
+                        {
+                            double blkP1 = p1.BlockDmg();
+                            Console.WriteLine($"{boss1.Name} attacking {p1.Name}");
+
+                            if (p1.CheckEvade())
+                            {
+                                Console.WriteLine($"{boss1.Name} attack missed");
+                            } 
+                            else
+                            {
+                                if (boss1.CheckCritChance())
+                                {
+                                    attackResultParty *= 2;
+                                    Console.WriteLine("Critical Attack!!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Normal hit : " + attackResultParty);
+                                }
+                                
+                            }
+
+                            // check element types
+                            if (p1.CharacterType == ElementType.leaf)
+                            {
+                                attackResultParty *= 2;
+                            }
+                            attackResultParty -= blkP1;
+                            if(attackResultParty < 0)
+                            {
+                                attackResultParty = 0;
+                            }
+                            p1.Hp -= attackResultParty;
+                            Console.WriteLine($"{p1.Name} have {p1.Hp} hp left .");
+                        }
+                        else if (keepAtkP == 1)
+                        {
+                            double blkP2 = p2.BlockDmg();
+                            Console.WriteLine($"{boss1.Name} attacking {p2.Name}");
+
+                            if (p2.CheckEvade())
+                            {
+                                Console.WriteLine($"{boss1.Name} attack missed");
+                            }
+                            else
+                            {
+                                if (boss1.CheckCritChance())
+                                {
+                                    attackResultParty *= 2;
+                                    Console.WriteLine("Critical Attack!!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Normal hit : " + attackResultParty);
+                                }
+
+                            }
+
+                            // check element types
+                            if (p2.CharacterType == ElementType.leaf)
+                            {
+                                attackResultParty *= 2;
+                            }
+                            attackResultParty -= blkP2;
+                            if (attackResultParty < 0)
+                            {
+                                attackResultParty = 0;
+                            }
+                            p2.Hp -= attackResultParty;
+                            Console.WriteLine($"{p2.Name} have {p2.Hp} hp left .");
+                        }
+                        else if(keepAtkP == 2)
+                        {
+                            double blkP3 = p3.BlockDmg();
+                            Console.WriteLine($"{boss1.Name} attacking {p3.Name}");
+
+                            if (p3.CheckEvade())
+                            {
+                                Console.WriteLine($"{boss1.Name} attack missed");
+                            }
+                            else
+                            {
+                                if (boss1.CheckCritChance())
+                                {
+                                    attackResultParty *= 2;
+                                    Console.WriteLine("Critical Attack!!");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("Normal hit : " + attackResultParty);
+                                }
+
+                            }
+
+                            // check element types
+                            if (p3.CharacterType == ElementType.leaf)
+                            {
+                                attackResultParty *= 2;
+                            }
+
+                            attackResultParty -= blkP3;
+                            if(attackResultParty < 0)
+                            {
+                                attackResultParty = 0;
+                            }
+                            p3.Hp -= attackResultParty;
+                            Console.WriteLine($"{p3.Name} have {p3.Hp} hp left .");
+                        }
                             Console.WriteLine("attack");
-                            p1.Hp = 0;
-                            Console.WriteLine("Life stat p1 >> " + p1.Hp);
-                        p2.Hp = 0;
-                        p3.Hp = 0;
+                            //p1.Hp = 0;
+                            
+                        //p2.Hp = 0;
+                        //p3.Hp = 0;
                         //boss1.Hp = 0;
                             boss1.CheckState();
 
