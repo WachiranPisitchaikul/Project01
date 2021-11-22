@@ -4,13 +4,6 @@ using System.Text;
 
 namespace itemForClass
 {
-    public enum ElementType
-    {
-        common,
-        fire,
-        water,
-        leaf
-    }
     class Data
     {
         public string Name { get; set; }

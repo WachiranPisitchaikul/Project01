@@ -20,13 +20,17 @@ namespace itemForClass
             // party object
             Data tester = new Data();
 
-            Player1 bigFrog = new Player1("Big Frog", 250, 30, 30, 30, 15, 15, true, ElementType.water); // Attacker
+            Character bigFrog = new Player1();
+            Character ironBunny = new Player2();
+            Character witchCat = new Player3();
+
+            /*Player1 bigFrog = new Player1("Big Frog", 250, 30, 30, 30, 15, 15, true, ElementType.water); // Attacker
             Player2 ironBummy = new Player2("Iron Bunny", 300, 25, 10, 50, 45, 15, true, ElementType.leaf); // Tank
-            Player3 witchCat = new Player3("Witch cat", 200, 45, 40, 20, 10, 15, true, ElementType.fire); // Mage
+            Player3 witchCat = new Player3("Witch cat", 200, 45, 40, 20, 10, 15, true, ElementType.fire); // Mage */
 
 
             // party array
-            string[] party = new string[] { bigFrog.Name, ironBummy.Name, witchCat.Name };
+            string[] party = new string[] { bigFrog.Name, ironBunny.Name, witchCat.Name };
 
             // formation object
             Formation formation1 = new Formation("Veticle", 75, 25, 25, 50, 0, 0);
@@ -34,10 +38,15 @@ namespace itemForClass
             Formation formation3 = new Formation("Horizon", 100, 20, 10, 100, 0, 0);
 
             // boss object
-            IronMagmaP magmaP = new IronMagmaP("Pig Magma", 700, 65, 20, 50, 20, 5, true, ElementType.fire);
+            Character magmaP = new IronMagmaP();
 
             // run phase
-            Battle.BattleCal(bigFrog, ironBummy, witchCat, magmaP, item1, item2, item3, item4, item, tester, itemSlot, itemCheck, party);
+
+            Battle.StartBattle(bigFrog, ironBunny, witchCat, magmaP, item1, item2, item3, item4, item, tester, itemSlot, itemCheck, party);
+
+            
+
+            //Battle.BattleCal(bigFrog, ironBummy, witchCat, magmaP, item1, item2, item3, item4, item, tester, itemSlot, itemCheck, party);
 
             /*Character.ShowStat(bigFrog, ironBummy, witchCat);
 

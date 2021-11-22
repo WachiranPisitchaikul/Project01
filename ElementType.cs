@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Final_Project_ss1
+namespace itemForClass
 {
     public enum ElementType
     {
@@ -12,4 +12,3 @@ namespace Final_Project_ss1
         leaf
     }
 }
-

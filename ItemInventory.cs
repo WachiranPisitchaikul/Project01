@@ -101,15 +101,15 @@ namespace itemForClass
 
 
         // Remove Items
-        public static void RemoveItems(string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger, Data p1, Data p2, Data p3)
+        public static void RemoveItems(string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger, Character p1, Character p2, Character p3)
         {
-            Data[] pStat = new Data[] { p1, p2, p3 };
-            Console.WriteLine("\n - After removed items -\n");
+            //Data[] pStat = new Data[] { p1, p2, p3 };
+            Console.WriteLine("\n - Item removed -\n");
             for (int i = 0; i < itemCheck.Length; i++)
             {
                 itemCheck[i] = default;
             }
-            Item.AttachItem(party, itemCheck);
+            /*Item.AttachItem(party, itemCheck);
             Console.WriteLine();
             try
             {
@@ -121,7 +121,7 @@ namespace itemForClass
             catch (Exception e)
             {
                 Console.WriteLine();
-            }
+            }*/
         }
     }
 }
