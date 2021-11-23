@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace itemForClass
+namespace itemToClass
 {
     class Player2 : Character, IAttack
     {

@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace itemForClass
+namespace itemToClass
 {
     class Formation : Data
     {
-        public int critChance { get; set; }
+        public int CritChance { get; set; }
 
-        public Formation(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade) : base(name, hp, atk, atkSpeed, def, evade)
+        public Formation()
         {
-            this.critChance = critChance;
+            
         }
 
         // display formation
@@ -38,8 +38,8 @@ namespace itemForClass
             FormationDisplay(form1, form2, form3);
             do
             {
-                    Console.WriteLine("\nplease select your formation .\n");
-                    Int32.TryParse(Console.ReadLine(), out chooseForm);
+                Console.WriteLine("\nplease select your formation .\n");
+                Int32.TryParse(Console.ReadLine(), out chooseForm);
                 for (int i = 0; i < party.Length; i++)
                 {
                     switch (chooseForm)
@@ -115,7 +115,7 @@ namespace itemForClass
                                 pCheck.Def += form1.Def;
 
                                 Console.WriteLine($" Hp: {pCheck.Hp} Atk: {pCheck.Atk} AtkSpeed: {pCheck.AtkSpeed} Def: {pCheck.Def} CritChance: {obj.CritChance} Evade: {pCheck.Evade}\n");
-                                
+
                                 x++;
                                 break;
                             }
@@ -190,7 +190,7 @@ namespace itemForClass
                                 pCheck.Def += form2.Def;
 
                                 Console.WriteLine($" Hp: {pCheck.Hp} Atk: {pCheck.Atk} AtkSpeed: {pCheck.AtkSpeed} Def: {pCheck.Def} CritChance: {obj.CritChance} Evade: {pCheck.Evade}\n");
-                                
+
                                 x++;
                                 break;
                             }
@@ -265,12 +265,12 @@ namespace itemForClass
                                 pCheck.Def += form3.Def;
 
                                 Console.WriteLine($" Hp: {pCheck.Hp} Atk: {pCheck.Atk} AtkSpeed: {pCheck.AtkSpeed} Def: {pCheck.Def} CritChance: {obj.CritChance} Evade: {pCheck.Evade}\n");
-                                
+
                                 x++;
                                 break;
                             }
-                        default :
-                            { 
+                        default:
+                            {
                                 Console.WriteLine("\n- please enter the number between 1-3 -");
                                 i = 3;
                                 break;

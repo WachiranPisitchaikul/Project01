@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace itemForClass
+namespace itemToClass
 {
     class ItemInventory
     {
         // show item inventory
-        public static void Inventory(Sword sword, Wand wand, Axe axe, Dagger dagger)
+        public static void Inventory(Item sword, Item wand, Item axe, Item dagger)
         {
             int i = 0;
-            Item[] itemInInventory = new Item[] {sword, wand, axe, dagger};
+            Item[] itemInInventory = new Item[] { sword, wand, axe, dagger };
             Console.WriteLine("====== Item Inventory ==============================================\n");
             foreach (Item item in itemInInventory)
             {
@@ -19,7 +19,7 @@ namespace itemForClass
             }
             Console.WriteLine("\n==================================================================");
         }
-        
+
 
         // player status after attach items
         /*public static void ItemWithPlayer(string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger, Common obj, Data pCheck, Player1 p1, Player2 p2, Player3 p3)
@@ -101,7 +101,7 @@ namespace itemForClass
 
 
         // Remove Items
-        public static void RemoveItems(string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger, Character p1, Character p2, Character p3)
+        public static void RemoveItems(string[] itemCheck, string[] party, Item sword, Item wand, Item axe, Item dagger, Character p1, Character p2, Character p3)
         {
             //Data[] pStat = new Data[] { p1, p2, p3 };
             Console.WriteLine("\n - Item removed -\n");

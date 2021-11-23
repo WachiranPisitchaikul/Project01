@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace itemForClass
+namespace itemToClass
 {
     abstract class Character : Data, IAttack
     {
@@ -44,11 +44,11 @@ namespace itemForClass
 
         public bool CheckState()
         {
-            
-            if(Hp <= 0)
+
+            if (Hp <= 0)
             {
                 Console.WriteLine($"{Name} has died ...");
-                
+
                 Hp = 0;
                 Atk = 0;
                 AtkSpeed = 0;
@@ -58,11 +58,22 @@ namespace itemForClass
                 CharacterType = ElementType.common;
                 Life = false;
             }
-            
+
             return Life;
         }
 
-        public static void ItemWithPlayer(string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger, Common obj, Data pCheck, Character p1, Character p2, Character p3)
+        public Character[] CheckAtkSp(Character p1, Character p2, Character p3, Character boss1)
+        {
+            double[] charSp = new double[] { p1.AtkSpeed, p2.AtkSpeed, p3.AtkSpeed, boss1.AtkSpeed };
+            System.Array.Sort(charSp);
+            
+            Character[] characterSp = new Character[] { };
+            System.Array.Sort(characterSp);
+
+            return characterSp;
+        }
+
+        public static void ItemWithPlayer(string[] itemCheck, string[] party, Item sword, Item wand, Item axe, Item dagger, Common obj, Data pCheck, Character p1, Character p2, Character p3)
         {
             int x = 0;
 

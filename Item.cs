@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace itemForClass
+namespace itemToClass
 {
     abstract class Item : Data
     {
@@ -27,7 +27,7 @@ namespace itemForClass
         }
 
         // Equip Items
-        public static void EquipItems(string[] itemSlot, string[] itemCheck, string[] party, Sword sword, Wand wand, Axe axe, Dagger dagger)
+        public static void EquipItems(string[] itemSlot, string[] itemCheck, string[] party, Item sword, Item wand, Item axe, Item dagger)
         {
             char confirm;
             int x = 0;
@@ -111,7 +111,7 @@ namespace itemForClass
                     }
                     AttachItem(party, itemCheck);
                 }
-            } while (x < party.Length); 
+            } while (x < party.Length);
         }
 
         public abstract void ActionAttack();
@@ -125,50 +125,4 @@ namespace itemForClass
         }
     }
 
-    class Sword : Item
-    {
-        public Sword(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, critChance, evade, type)
-        {
-        }
-
-        public override void ActionAttack()
-        {
-            
-        }
-    }
-
-    class Wand : Item
-    {
-        public Wand(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, critChance, evade, type)
-        {
-        }
-
-        public override void ActionAttack()
-        {
-            
-        }
-    }
-
-    class Axe : Item
-    {
-        public Axe(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, critChance, evade, type)
-        {
-        }
-
-        public override void ActionAttack()
-        {
-            
-        }
-    }
-    class Dagger : Item
-    {
-        public Dagger(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, critChance, evade, type)
-        {
-        }
-
-        public override void ActionAttack()
-        {
-            
-        }
-    }
 }
