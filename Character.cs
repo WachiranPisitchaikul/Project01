@@ -47,6 +47,7 @@ namespace itemToClass
 
             if (Hp <= 0)
             {
+                
                 Console.WriteLine($"{Name} has died ...");
 
                 Hp = 0;

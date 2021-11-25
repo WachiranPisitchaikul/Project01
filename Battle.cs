@@ -19,19 +19,24 @@ namespace itemToClass
                 else
                 {
                     Console.WriteLine("Lose");
-                    Console.WriteLine("\ndo you want to try again ?");
-                    Char.TryParse(Console.ReadLine(), out yOrn);
-                    if (yOrn == 'y')
+                    do
                     {
-                    }
-                    else if (yOrn == 'n')
-                    {
-                        break;
-                    }
-                    else
-                    {
-                        Console.WriteLine("you enter wrong input .");
-                    }
+
+
+                        Console.WriteLine("\ndo you want to try again ?");
+                        Char.TryParse(Console.ReadLine(), out yOrn);
+                        if (yOrn == 'y')
+                        {
+                        }
+                        else if (yOrn == 'n')
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            Console.WriteLine("you enter wrong input .");
+                        }
+                    } while (yOrn != 'n');
                 }
             }
         }
@@ -280,14 +285,14 @@ namespace itemToClass
                         Character[] AtkP = new Character[] { p1, p2, p3 };
                         Random randAtkP = new Random();
                         int keepAtkP = randAtkP.Next(0, 2);
-                        if (p1.Hp > 0 || p1.Life == true)
+                        if (keepAtkP == 0 && p1.Life == false)
                         {
                             // check p1 state
 
-                            if (keepAtkP == 0)
+                            if (keepAtkP == 0 || p2.Life == false && p3.Life == false)
                             {
                                 double blkP1 = p1.BlockDmg();
-                                Console.WriteLine($"{boss1.Name} attacking {p1.Name}");
+                                Console.WriteLine($"\n{boss1.Name} attacking {p1.Name}");
 
                                 if (p1.CheckEvade())
                                 {
@@ -326,15 +331,16 @@ namespace itemToClass
                             keepAtkP = randAtkP.Next(1, 2);
                         }
 
-                        if (p2.Hp > 0 || p2.Life == true)
+                        if (keepAtkP == 1 && p2.Life == false)
                         {
+
                             // check p2 state
 
 
-                            if (keepAtkP == 1)
+                            if (keepAtkP == 1 || p1.Life == false && p3.Life == false)
                             {
                                 double blkP2 = p2.BlockDmg();
-                                Console.WriteLine($"{boss1.Name} attacking {p2.Name}");
+                                Console.WriteLine($"\n{boss1.Name} attacking {p2.Name}");
 
                                 if (p2.CheckEvade())
                                 {
@@ -371,45 +377,62 @@ namespace itemToClass
                         }
                         else
                         {
-                            //keepAtkP = 
+                            
+                            do
+                            {
+                                keepAtkP = randAtkP.Next(0, 2);
+                                if (keepAtkP == 0 || keepAtkP == 2)
+                                {
+                                    break;
+                                }
+                            } while (keepAtkP == 1);
                         }
 
-                             if (keepAtkP == 2)
+                        if (keepAtkP == 2 && p3.Life == false)
                         {
-                            double blkP3 = p3.BlockDmg();
-                            Console.WriteLine($"{boss1.Name} attacking {p3.Name}");
 
-                            if (p3.CheckEvade())
+
+                            if (keepAtkP == 2 || p1.Life == false && p2.Life == false)
                             {
-                                Console.WriteLine($"{boss1.Name} attack missed");
-                            }
-                            else
-                            {
-                                if (boss1.CheckCritChance())
+                                double blkP3 = p3.BlockDmg();
+                                Console.WriteLine($"\n{boss1.Name} attacking {p3.Name}");
+
+                                if (p3.CheckEvade())
                                 {
-                                    attackResultParty *= 2;
-                                    Console.WriteLine("Critical Attack!!");
+                                    Console.WriteLine($"{boss1.Name} attack missed");
                                 }
                                 else
                                 {
-                                    Console.WriteLine("Normal hit : " + attackResultParty);
+                                    if (boss1.CheckCritChance())
+                                    {
+                                        attackResultParty *= 2;
+                                        Console.WriteLine("Critical Attack!!");
+                                    }
+                                    else
+                                    {
+                                        Console.WriteLine("Normal hit : " + attackResultParty);
+                                    }
+
                                 }
 
-                            }
+                                // check element types
+                                if (p3.CharacterType == ElementType.leaf)
+                                {
+                                    attackResultParty *= 2;
+                                }
 
-                            // check element types
-                            if (p3.CharacterType == ElementType.leaf)
-                            {
-                                attackResultParty *= 2;
+                                attackResultParty -= blkP3;
+                                if (attackResultParty < 0)
+                                {
+                                    attackResultParty = 0;
+                                }
+                                p3.Hp -= attackResultParty;
+                                Console.WriteLine($"{p3.Name} have {p3.Hp} hp left .");
                             }
-
-                            attackResultParty -= blkP3;
-                            if (attackResultParty < 0)
-                            {
-                                attackResultParty = 0;
-                            }
-                            p3.Hp -= attackResultParty;
-                            Console.WriteLine($"{p3.Name} have {p3.Hp} hp left .");
+                        }
+                        else
+                        {
+                            keepAtkP = randAtkP.Next(0, 1);
                         }
                         Console.WriteLine("attack");
                         //p1.Hp = 0;

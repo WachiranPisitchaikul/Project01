@@ -38,9 +38,9 @@ namespace itemToClass
 
             // run phase
 
-            bigFrog.CheckAtkSp(bigFrog, ironBunny, witchCat, magmaP);
+            //bigFrog.CheckAtkSp(bigFrog, ironBunny, witchCat, magmaP);
             //Character.CheckAtkSp(bigFrog, ironBunny, witchCat, magmaP);
-            //Battle.StartBattle(bigFrog, ironBunny, witchCat, magmaP, item1, item2, item3, item4, item, tester, itemSlot, itemCheck, party);
+            Battle.StartBattle(bigFrog, ironBunny, witchCat, magmaP, item1, item2, item3, item4, item, tester, itemSlot, itemCheck, party);
 
 
 
