@@ -11,6 +11,7 @@ namespace itemToClass
         public double Atk { get; set; }
         public double AtkSpeed { get; set; }
         public double Def { get; set; }
+        public int CritChance { get; set; }
         public int Evade { get; set; }
 
         public Data() { }

@@ -6,15 +6,7 @@ namespace itemToClass
 {
     abstract class Item : Data
     {
-        public int CritChance { get; set; }
         public ElementType WeaponType { get; set; }
-
-        public Item() { }
-        public Item(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, ElementType type) : base(name, hp, atk, atkSpeed, def, evade)
-        {
-            this.CritChance = critChance;
-            this.WeaponType = type;
-        }
 
         // Attach Items
         public static void AttachItem(string[] party, string[] itemCheck)
@@ -48,58 +40,59 @@ namespace itemToClass
                     switch (inputItems)
                     {
                         case string n when inputItems == itemSlot[0] || inputItems == itemSlot[1] ||
-                                           inputItems == itemSlot[2] || inputItems == itemSlot[3]:
-                            {
-                                // Check Duplicate Select Items
+                                           inputItems == itemSlot[2] || inputItems == itemSlot[3] :
+                        {
+                            // Check Duplicate Select Items
 
-                                if (inputItems == itemCheck[0] || inputItems == itemCheck[1] ||
-                                    inputItems == itemCheck[2] || inputItems == itemCheck[3])
+                            if (inputItems == itemCheck[0] || inputItems == itemCheck[1] ||
+                                inputItems == itemCheck[2] || inputItems == itemCheck[3])
+                        {
+                            Console.WriteLine("\nYou have selected {0} before .", inputItems);
+                        }
+                            else
+                        {
+                            // confirm items and attach them
+                            do
+                            {
+                                Console.WriteLine("\nAre you sure to used " + itemCheck[x] + "  ( y / n ) ");
+                                Char.TryParse(Console.ReadLine().ToLower(), out confirm);
+                                switch (confirm)
                                 {
-                                    Console.WriteLine("\nYou have selected {0} before .", inputItems);
-                                }
-                                else
-                                {
-                                    // confirm items and attach them
-                                    do
+                                    case 'y':
                                     {
-                                        Console.WriteLine("\nAre you sure to used " + itemCheck[x] + "  ( y / n ) ");
-                                        Char.TryParse(Console.ReadLine().ToLower(), out confirm);
-                                        switch (confirm)
-                                        {
-                                            case 'y':
-                                                {
-                                                    itemCheck[x] = inputItems;
-                                                    Console.WriteLine("\nOkay ! You Choose " + itemCheck[x] + "     Let's see");
-                                                    x++;
-                                                    check = false;
-                                                    yOrN = false;
-                                                    break;
-                                                }
-                                            case 'Y':
-                                                {
-                                                    goto case 'y';
-                                                }
-                                            case 'n':
-                                                {
-                                                    Console.WriteLine($"\nAww. {inputItems} is not your choice      Let's have a look ... ! ");
-                                                    yOrN = false;
-                                                    break;
-                                                }
-                                            case 'N':
-                                                {
-                                                    goto case 'n';
-                                                }
-                                            default:
-                                                {
-                                                    Console.WriteLine("\n-- you enter wrong input --");
-                                                    Console.WriteLine("-- please try again --");
-                                                    break;
-                                                }
-                                        }
-                                    } while (yOrN);
+                                        itemCheck[x] = inputItems;
+                                        Console.WriteLine("\nOkay ! You Choose " + itemCheck[x] + "     Let's see");
+                                        x++;
+                                        check = false;
+                                        yOrN = false;
+                                        break;
+                                    }
+                                    case 'Y':
+                                    {
+                                        goto case 'y';
+                                    }
+                                    case 'n':
+                                    {
+                                        Console.WriteLine(
+                                            $"\nAww. {inputItems} is not your choice      Let's have a look ... ! ");
+                                        yOrN = false;
+                                        break;
+                                    }
+                                    case 'N':
+                                    {
+                                        goto case 'n';
+                                    }
+                                    default:
+                                    {
+                                        Console.WriteLine("\n-- you enter wrong input --");
+                                        Console.WriteLine("-- please try again --");
+                                        break;
+                                    }
                                 }
-                                break;
-                            }
+                            } while (yOrN);
+                        }
+                            break;
+                    }
 
                         default:
                             {
@@ -113,16 +106,11 @@ namespace itemToClass
                 }
             } while (x < party.Length);
         }
-
-        public abstract void ActionAttack();
+        
     }
 
     class Common : Item
     {
-        public override void ActionAttack()
-        {
-            throw new NotImplementedException();
-        }
     }
 
 }

@@ -1,24 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 
 namespace itemToClass
 {
-    abstract class Character : Data, IAttack
+    abstract class Character : Data
     {
         public bool Life { get; set; }
         public ElementType CharacterType { get; set; }
-        public int CritChance { get; set; }
 
-        public Character() { }
-        public Character(string name, double hp, double atk, double atkSpeed, double def, int critChance, int evade, bool life, ElementType type) : base(name, hp, atk, atkSpeed, def, evade)
-        {
-            this.CritChance = critChance;
-            this.Life = life;
-            this.CharacterType = type;
-        }
 
-        public static void ShowStat(Player1 p1, Player2 p2, Player3 p3)
+        public static void ShowStat(Character p1, Character p2, Character p3)
         {
             Character[] displayStats = new Character[] { p1, p2, p3 };
             Console.WriteLine();
@@ -31,25 +22,18 @@ namespace itemToClass
             Console.WriteLine();
         }
 
-        public abstract double BlockDmg();
+        public abstract double BlockDmg(int[] formCheck, string[] itemCheck);
 
-        public abstract bool CheckEvade();
+        public abstract bool CheckEvade(string[] itemCheck);
 
-        public abstract bool CheckCritChance();
+        public abstract bool CheckCritChance(string[] itemCheck);
 
-        public virtual double Attack()
-        {
-            return 0;
-        }
-
+        public abstract double Attack(string[] itemCheck, int[] formCheck);
+        
         public bool CheckState()
         {
-
             if (Hp <= 0)
             {
-                
-                Console.WriteLine($"{Name} has died ...");
-
                 Hp = 0;
                 Atk = 0;
                 AtkSpeed = 0;
@@ -63,22 +47,15 @@ namespace itemToClass
             return Life;
         }
 
-        public Character[] CheckAtkSp(Character p1, Character p2, Character p3, Character boss1)
-        {
-            double[] charSp = new double[] { p1.AtkSpeed, p2.AtkSpeed, p3.AtkSpeed, boss1.AtkSpeed };
-            System.Array.Sort(charSp);
-            
-            Character[] characterSp = new Character[] { };
-            System.Array.Sort(characterSp);
+        public abstract bool Revive();
 
-            return characterSp;
-        }
+        public abstract double AtkSpBoots(string[] itemCheck, int[] formCheck);
+
+        public abstract void ResetLife();
 
         public static void ItemWithPlayer(string[] itemCheck, string[] party, Item sword, Item wand, Item axe, Item dagger, Common obj, Data pCheck, Character p1, Character p2, Character p3)
         {
-            int x = 0;
-
-            Console.WriteLine("\n=======================================================================================================");
+            Console.WriteLine("\n==============================================================================================================");
 
             for (int i = 0; i < party.Length; i++)
             {
@@ -146,12 +123,11 @@ namespace itemToClass
                     pCheck.Evade += dagger.Evade;
                 }
                 Console.WriteLine($" Hp: {pCheck.Hp} Atk: {pCheck.Atk} AtkSpeed: {pCheck.AtkSpeed} Def: {pCheck.Def} CritChance: {obj.CritChance} Evade: {pCheck.Evade}\n");
-                x++;
             }
 
-            Console.WriteLine("=======================================================================================================");
+            Console.WriteLine("==============================================================================================================");
         }
-        // check stats
+        
     }
 
 }

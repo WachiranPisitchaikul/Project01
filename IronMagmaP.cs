@@ -4,7 +4,7 @@ using System.Text;
 
 namespace itemToClass
 {
-    class IronMagmaP : Character, IAttack
+    class IronMagmaP : Enemy
     {
         public IronMagmaP()
         {
@@ -16,10 +16,10 @@ namespace itemToClass
             base.Evade = 5;
             base.CritChance = 20;
             base.Life = true;
-            base.CharacterType = ElementType.fire;
+            base.EnemyType = ElementType.fire;
         }
 
-        public override double Attack()
+        public override double AttackParty()
         {
             int keepAtk;
             Random boss1Random = new Random();
@@ -28,7 +28,13 @@ namespace itemToClass
             return keepAtk;
         }
 
-        public override double BlockDmg()
+        public override double AtkSpBootsE()
+        {
+            double keepAtkSp = AtkSpeed;
+            return keepAtkSp;
+        }
+
+        public override double BlockDmgChar()
         {
             int keepDef;
             // defense random
@@ -37,7 +43,8 @@ namespace itemToClass
 
             return keepDef;
         }
-        public override bool CheckEvade()
+        
+        public override bool CheckEvadeE()
         {
             int keepEvade;
             bool evadeCheck = false;
@@ -48,13 +55,12 @@ namespace itemToClass
             if (keepEvade > 0 && keepEvade <= 5)
             {
                 Console.WriteLine($"{Name} don't get damage in this turn .");
-                Console.WriteLine(keepEvade);
                 evadeCheck = true;
             }
             return evadeCheck;
         }
 
-        public override bool CheckCritChance()
+        public override bool CheckCritChanceE()
         {
             int keepCrit;
             bool checkCrit = false;
@@ -70,5 +76,37 @@ namespace itemToClass
             return checkCrit;
         }
 
+        public override bool ReviveE()
+        {
+            if (Hp <= 0)
+            {
+                Console.WriteLine($"We are Reviving {Name} ...");
+                Name = "PigMa";
+                Hp = 700;
+                Atk = 65;
+                AtkSpeed = 20;
+                Def = 50;
+                Evade = 5;
+                CritChance = 20;
+                Life = true;
+                EnemyType = ElementType.fire;
+            }
+
+            return Life;
+        }
+
+        public override bool ItemDrop(Item item, string[] itemSlot)
+        {
+            char askCon;
+            bool dropItem = false;
+            if (Life == false)
+            {
+                Console.WriteLine("\nYour party have defeated " + Name + " and got " + item.Name + " !\n");
+                itemSlot[4] = item.Name;
+                dropItem = true;
+            }
+
+            return dropItem;
+        }
     }
 }

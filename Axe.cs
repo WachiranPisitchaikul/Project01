@@ -16,10 +16,5 @@ namespace itemToClass
             base.Evade = 0;
             base.WeaponType = ElementType.water;
         }
-
-        public override void ActionAttack()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -9,10 +9,9 @@ namespace itemToClass
         public Form3()
         {
             base.Name = "form3";
-            base.Hp = 100;
-            base.Atk = 20;
-            base.AtkSpeed = 10;
-            base.Def = 100;
+            base.Atk = 10;
+            base.AtkSpeed = 0;
+            base.Def = 10;
             base.CritChance = 0;
             base.Evade = 0;
         }

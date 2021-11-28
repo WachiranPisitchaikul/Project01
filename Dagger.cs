@@ -16,10 +16,6 @@ namespace itemToClass
             base.Evade = 15;
             base.WeaponType = ElementType.leaf;
         }
-
-        public override void ActionAttack()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
